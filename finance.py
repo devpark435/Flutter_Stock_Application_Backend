@@ -10,11 +10,6 @@ import plotly.graph_objs as go
 
 app = Flask(__name__)
 
-
-
-
-
-
 #Print data
 @app.route("/")
 def hi():
@@ -54,3 +49,7 @@ def samsung():
     )
     #Show
     return fig.show()
+
+
+if __name__ == "__main__":
+    app.run(ssl_context=('cert.pem', 'key.pem'))
