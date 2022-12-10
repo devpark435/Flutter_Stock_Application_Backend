@@ -2,10 +2,12 @@
 import numpy as np
 import pandas as pd
 import ssl
+from flask_sslify import SSLify
+from flask import Flask,jsonify
 #Data Source
 import yfinance as yf
-from flask import Flask,jsonify
 import plotly.graph_objs as go
+
 
 
 app = Flask(__name__)
@@ -50,6 +52,6 @@ def samsung():
     #Show
     return fig.show()
 
-
 if __name__ == "__main__":
-    app.run(ssl_context=('cert.pem', 'key.pem'))
+    app.debug = True
+    app.run(host="0.0.0.0", port="443", ssl_context='adhoc')
