@@ -13,13 +13,11 @@ import plotly.graph_objs as go
 app = Flask(__name__)
 
 #Print data
-@app.route("/")
-def hi():
-  return "hello"
+
 @app.route("/data")
 def data():
   return str(yf.download(tickers='005930.KS', period='1d', interval='1m'))
-@app.route("/삼성전자")
+@app.route("/")
 def samsung():
     #Data viz
     data = yf.download(tickers='005930.KS', period='1d', interval='1m')
@@ -54,4 +52,4 @@ def samsung():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host="0.0.0.0", port="8080", ssl_context='adhoc')
+    app.run()
